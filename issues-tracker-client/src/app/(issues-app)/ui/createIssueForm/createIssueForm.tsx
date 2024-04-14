@@ -1,3 +1,5 @@
+"use client";
+
 import { createIssue } from "@/app/(issues-app)/lib/data";
 
 type FormProps = {};

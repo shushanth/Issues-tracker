@@ -34,5 +34,5 @@ export async function createIssue(data: CreateIssue) {
     },
     body: JSON.stringify(data),
   });
-  // revalidatePath("/issues");
+  revalidatePath("/issues");
 }
