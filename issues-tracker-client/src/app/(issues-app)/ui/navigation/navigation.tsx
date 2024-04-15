@@ -14,7 +14,7 @@ const navItems: NavProps[] = [
   { id: 3, title: "Create", path: "/create" },
 ];
 
-export default function Navigation() {
+const Navigation = () => {
   const pathName = usePathname();
 
   const linkClassName = (path: string): string => {
@@ -35,4 +35,6 @@ export default function Navigation() {
       </div>
     </div>
   );
-}
+};
+
+export default Navigation;

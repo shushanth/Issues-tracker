@@ -6,7 +6,7 @@ import SigninForm from "./SigninForm";
 
 export type LoginState = "signin" | "register";
 
-export default function LoginContainer() {
+const LoginContainer = () => {
   const [loginActive, setLoginActive] = useState<LoginState>("signin");
 
   const onChangeActive = (navState: LoginState) => {
@@ -38,4 +38,6 @@ export default function LoginContainer() {
       </div>
     </div>
   );
-}
+};
+
+export default LoginContainer;

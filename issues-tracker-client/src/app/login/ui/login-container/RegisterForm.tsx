@@ -1,4 +1,6 @@
-export default function RegisterForm() {
+import SubmitBtn from "@/app/common/components/button/submitBtn";
+
+const RegisterForm = () => {
   return (
     <div className="register-form m-2 p-2 flex flex-col">
       <form name="register" id="register">
@@ -35,11 +37,11 @@ export default function RegisterForm() {
           />
         </div>
         <div className="action p-2 m-4 flex flex-col">
-          <button className="p-2 mb-2 rounded-sm bg-indigo-500">
-            Register
-          </button>
+          <SubmitBtn title="Register" />
         </div>
       </form>
     </div>
   );
-}
+};
+
+export default RegisterForm;

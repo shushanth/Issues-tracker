@@ -1,4 +1,6 @@
-export default function SigninForm() {
+import SubmitBtn from "@/app/common/components/button/submitBtn";
+
+const SigninForm = () => {
   return (
     <div className="signin-form m-2 p-2 flex flex-col">
       <form name="signin" id="signin">
@@ -18,10 +20,10 @@ export default function SigninForm() {
             className="p-2 mt-2 rounded-sm text-black"
           />
         </div>
-        <div className="action p-2 m-4 flex flex-col">
-          <button className="p-2 mb-2 rounded-sm bg-indigo-500">Login</button>
-        </div>
+        <SubmitBtn title="Login" />
       </form>
     </div>
   );
-}
+};
+
+export default SigninForm;

@@ -1,8 +1,7 @@
 import { issuesByUser } from "../lib/data";
 
-export default async function Issues() {
+const Issues = async () => {
   const issues = await issuesByUser(214);
-
   return (
     <div className="m-2 p-2 flex flex-col">
       {issues.map((issue) => {
@@ -19,4 +18,6 @@ export default async function Issues() {
       })}
     </div>
   );
-}
+};
+
+export default Issues;
