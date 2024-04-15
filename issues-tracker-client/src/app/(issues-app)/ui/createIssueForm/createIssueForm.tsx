@@ -4,17 +4,17 @@ import SubmitBtn from "@/app/common/components/button/submitBtn";
 import { CreateIssue } from "../../lib/data";
 
 type CreateIssueFormProps = {
-  createIssue: (value: CreateIssue) => void;
+  createIssueAction: (value: CreateIssue) => void;
 };
 
-const CreateIssueForm = ({ createIssue }: CreateIssueFormProps) => {
+const CreateIssueForm = ({ createIssueAction }: CreateIssueFormProps) => {
   const onIssueSubmit = async (formData: FormData) => {
     const formSubmitData = {
       userId: 214,
       title: formData.get("title") as string,
       description: formData.get("description") as string,
     };
-    await createIssue(formSubmitData);
+    await createIssueAction(formSubmitData);
   };
   return (
     <form action={onIssueSubmit} id="create-issue">

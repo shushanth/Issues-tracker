@@ -1,7 +1,7 @@
-import { issuesByUser } from "../lib/data";
+import { issuesByUserAction } from "../lib/data";
 
 const Issues = async () => {
-  const issues = await issuesByUser(214);
+  const issues = await issuesByUserAction(214);
   return (
     <div className="m-2 p-2 flex flex-col">
       {issues.map((issue) => {

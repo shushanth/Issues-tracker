@@ -1,8 +1,8 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { ISSUE_SERVICES_URL } from "@/app/common/constants/constants";
 
-const ISSUES_URL = "http://localhost:4000";
 export interface CreateIssue {
   userId: number;
   title: string;
@@ -18,15 +18,15 @@ export interface Issues {
   updatedAt: Date;
 }
 
-export async function issuesByUser(userId: number): Promise<Issues[]> {
-  const results = await fetch(`${ISSUES_URL}/issues/${214}`, {
+export async function issuesByUserAction(userId: number): Promise<Issues[]> {
+  const results = await fetch(`${ISSUE_SERVICES_URL}/issues/${214}`, {
     cache: "no-store",
   });
   return results.json();
 }
 
-export async function createIssue(data: CreateIssue) {
-  await fetch(`${ISSUES_URL}/issues`, {
+export async function createIssueAction(data: CreateIssue) {
+  await fetch(`${ISSUE_SERVICES_URL}/issues`, {
     method: "POST",
     headers: {
       Accept: "application/json",
