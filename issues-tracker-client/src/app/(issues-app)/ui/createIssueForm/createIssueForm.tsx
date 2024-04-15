@@ -1,10 +1,14 @@
 "use client";
 
-import { createIssue } from "@/app/(issues-app)/lib/data";
 import SubmitBtn from "@/app/common/components/button/submitBtn";
+import { CreateIssue } from "../../lib/data";
 
-const CreateIssueForm = ({}) => {
-  const onFormAction = async (formData: FormData) => {
+type CreateIssueFormProps = {
+  createIssue: (value: CreateIssue) => void;
+};
+
+const CreateIssueForm = ({ createIssue }: CreateIssueFormProps) => {
+  const onIssueSubmit = async (formData: FormData) => {
     const formSubmitData = {
       userId: 214,
       title: formData.get("title") as string,
@@ -13,7 +17,7 @@ const CreateIssueForm = ({}) => {
     await createIssue(formSubmitData);
   };
   return (
-    <form action={onFormAction} id="create-issue">
+    <form action={onIssueSubmit} id="create-issue">
       <div className="flex flex-col p-2 m-2">
         <label htmlFor="title">Title</label>
         <input

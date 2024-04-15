@@ -1,9 +1,10 @@
 import CreateIssueForm from "../ui/createIssueForm/createIssueForm";
+import { createIssue } from "@/app/(issues-app)/lib/data";
 
-const Create = () => {
+const Create = async () => {
   return (
     <div className="p-2 m-2 flex flex-col">
-      <CreateIssueForm />
+      <CreateIssueForm createIssue={createIssue} />
     </div>
   );
 };

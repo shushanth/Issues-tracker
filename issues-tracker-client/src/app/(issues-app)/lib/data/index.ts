@@ -3,13 +3,13 @@
 import { revalidatePath } from "next/cache";
 
 const ISSUES_URL = "http://localhost:4000";
-interface CreateIssue {
+export interface CreateIssue {
   userId: number;
   title: string;
   description: string;
 }
 
-interface Issues {
+export interface Issues {
   id: number;
   userId: number;
   title: string;
