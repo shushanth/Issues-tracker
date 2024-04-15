@@ -1,9 +1,12 @@
 import CreateIssueForm from "../ui/createIssueForm/createIssueForm";
+import { createIssueAction } from "@/app/(issues-app)/lib/data";
 
-export default function Create() {
+const Create = async () => {
   return (
     <div className="p-2 m-2 flex flex-col">
-      <CreateIssueForm />
+      <CreateIssueForm createIssueAction={createIssueAction} />
     </div>
   );
-}
+};
+
+export default Create;

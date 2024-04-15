@@ -1,21 +1,23 @@
 "use client";
 
-import { createIssue } from "@/app/(issues-app)/lib/data";
+import SubmitBtn from "@/app/common/components/button/submitBtn";
+import { CreateIssue } from "../../lib/data";
 
-type FormProps = {};
+type CreateIssueFormProps = {
+  createIssueAction: (value: CreateIssue) => void;
+};
 
-export default function CreateIssueForm() {
-  const onFormAction = async (formData: FormData) => {
+const CreateIssueForm = ({ createIssueAction }: CreateIssueFormProps) => {
+  const onIssueSubmit = async (formData: FormData) => {
     const formSubmitData = {
       userId: 214,
       title: formData.get("title") as string,
       description: formData.get("description") as string,
     };
-    await createIssue(formSubmitData);
+    await createIssueAction(formSubmitData);
   };
-
   return (
-    <form action={onFormAction} id="create-issue">
+    <form action={onIssueSubmit} id="create-issue">
       <div className="flex flex-col p-2 m-2">
         <label htmlFor="title">Title</label>
         <input
@@ -32,10 +34,10 @@ export default function CreateIssueForm() {
         />
       </div>
       <div className="flex flex-col p-2 m-2">
-        <button className="flex self-end pt-2 pb-2 p-4 bg-blue-500 rounded">
-          Create
-        </button>
+        <SubmitBtn title="Create" />
       </div>
     </form>
   );
-}
+};
+
+export default CreateIssueForm;

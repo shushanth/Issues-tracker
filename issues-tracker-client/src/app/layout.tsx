@@ -9,11 +9,11 @@ export const metadata: Metadata = {
   description: "Issue tracker app, which tracks issues",
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
@@ -26,4 +26,5 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+export default RootLayout;
