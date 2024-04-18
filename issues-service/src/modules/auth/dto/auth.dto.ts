@@ -6,3 +6,7 @@ export interface AccessTokenPayloadDTO {
   id: string;
   email: string;
 }
+
+export interface RegisterSuccessDTO {
+  message: string;
+}
