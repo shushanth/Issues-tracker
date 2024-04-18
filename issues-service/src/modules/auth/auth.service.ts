@@ -5,7 +5,11 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
-import { AccessTokenDTO, AccessTokenPayloadDTO } from './dto/auth.dto';
+import {
+  AccessTokenDTO,
+  AccessTokenPayloadDTO,
+  RegisterSuccessDTO,
+} from './dto/auth.dto';
 import { UserLoginDTO, UsersDTO } from './../users/dto/users.dto';
 import { UsersService } from '../users/users.service';
 
@@ -17,7 +21,6 @@ export class AuthService {
   ) {}
 
   async signIn(user: UserLoginDTO): Promise<AccessTokenDTO> {
-    debugger;
     const existingUser = await this.userService.user(user.email);
 
     if (existingUser) {
@@ -37,18 +40,21 @@ export class AuthService {
     }
   }
 
-  async signUp(user: UsersDTO): Promise<AccessTokenDTO> {
+  async signUp(user: UsersDTO): Promise<RegisterSuccessDTO> {
     const userInRepo = await this.userService.user(user.email);
     if (userInRepo) {
       throw new BadRequestException('user already exists');
     }
     const passwordHash = await bcrypt.hash(user.password, 10);
     const newUser = { ...user, password: await passwordHash };
-    const createdNewUser = await this.userService.create(newUser);
-    return this.handleSignToken({
-      id: createdNewUser.id,
-      email: createdNewUser.email,
-    });
+    try {
+      await this.userService.create(newUser);
+      return {
+        message: 'User successfully registered',
+      };
+    } catch (error) {
+      throw new BadRequestException('Bad request');
+    }
   }
 
   private async handleSignToken(
