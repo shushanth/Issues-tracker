@@ -1,7 +1,16 @@
 import { IssuesService } from './issues.service';
-import { Controller, Get, Post, Body, Param, Logger } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Logger,
+  UseInterceptors,
+} from '@nestjs/common';
 import { Issues } from './issues.entity';
-
+import { TokenInterceptor } from './../../interceptors/token.interceptor';
+@UseInterceptors(TokenInterceptor)
 @Controller('issues')
 export class IssuesController {
   constructor(private issueService: IssuesService) {}
